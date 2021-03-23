@@ -1,22 +1,15 @@
 import React from "react";
+import { Message } from "../domain/Message";
 
 interface Props {
-  opinion: string;
-  name?: string;
+  message: Message;
 }
 
-export const MessageView: React.FunctionComponent<Props> = ({
-  name,
-  opinion,
-}) => {
-  if (!name) {
-    return <article>{opinion}</article>;
-  }
-
+export const MessageView: React.FunctionComponent<Props> = ({ message }) => {
   return (
     <article>
-      {opinion}
-      <footer>{name.toUpperCase()}</footer>
+      {message.message}
+      <footer>{message.author.toUpperCase()}</footer>
     </article>
   );
 };
