@@ -1,11 +1,11 @@
 import React from "react";
-import { Message as MessageType } from "../domain/Message";
+import { Message } from "../domain/Message";
 
 interface Props {
-  message: MessageType;
+  message: Message;
 }
 
-export const Message: React.FunctionComponent<Props> = ({ message }) => {
+export const MessageView: React.FunctionComponent<Props> = ({ message }) => {
   return (
     <article>
       {message.message}
@@ -14,4 +14,4 @@ export const Message: React.FunctionComponent<Props> = ({ message }) => {
   );
 };
 
-export default Message;
+export default MessageView;
