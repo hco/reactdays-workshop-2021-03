@@ -8,7 +8,10 @@ function App() {
       <h2>Hallo Pouria</h2>
       <MessageView
         message={{
-          author: "Patrick",
+          author: "Christian",
+          date: 1234,
+          message: "Hallo Welt!",
+          id: "asdjidasidjsais",
         }}
       />
     </>
