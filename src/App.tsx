@@ -7,6 +7,7 @@ function App() {
     <>
       <h2>Hallo Pouria</h2>
       <MessageView opinion="Ich mag React!" name={`Christian aus ${city}`} />
+      <MessageView opinion="Ich finde React komisch!" />
     </>
   );
 }
