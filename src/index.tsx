@@ -1,5 +1,5 @@
 import ReactDOM from "react-dom";
+import App, { foo } from "./App";
+console.log(foo);
 
-const element = <h1>Hallo Zoom! {Math.PI}</h1>;
-
-ReactDOM.render(element, document.getElementById("root"));
+ReactDOM.render(<App />, document.getElementById("root"));
