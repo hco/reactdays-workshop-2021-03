@@ -1,3 +1,4 @@
+import { MessageCompose } from "./component/MessageCompose";
 import MessageView from "./component/MessageView";
 import { Message } from "./domain/Message";
 
@@ -14,6 +15,7 @@ function App() {
     <>
       <h2>Hallo Pouria</h2>
       <MessageView message={message} />
+      <MessageCompose />
     </>
   );
 }
