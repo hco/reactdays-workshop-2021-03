@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Counter from "./Counter";
 
 export const MessageCompose: React.FunctionComponent = () => {
   const [inputValue, setInputValue] = useState("");
@@ -14,10 +15,13 @@ export const MessageCompose: React.FunctionComponent = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      {inputValue} <br />
-      <input onChange={handleChange} />
-      <button type="submit">Send Message!</button>
-    </form>
+    <div>
+      <form onSubmit={handleSubmit}>
+        {inputValue} <br />
+        <input onChange={handleChange} />
+        <button type="submit">Send Message!</button>
+      </form>
+      <Counter />
+    </div>
   );
 };
