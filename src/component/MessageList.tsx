@@ -1,5 +1,6 @@
 import { Message } from "../domain/Message";
 import React from "react";
+import MessageView from "./MessageView";
 
 export const MessageList: React.FunctionComponent = () => {
   const messages: Message[] = [
@@ -23,21 +24,11 @@ export const MessageList: React.FunctionComponent = () => {
     },
   ];
 
-  const listItems = messages.map((message) => (
-    <li key={message.id}>
-      {message.message} von {message.author}
-    </li>
-  ));
-
-  console.log(
-    messages.map((message) => {
-      return {
-        id: message.id,
-      };
-    })
+  return (
+    <div>
+      {messages.map((message) => (
+        <MessageView key={message.id} message={message} />
+      ))}
+    </div>
   );
-
-  console.log(messages.map(({ id }) => ({ id })));
-
-  return <ul>{listItems}</ul>;
 };
