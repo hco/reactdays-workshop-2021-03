@@ -1,5 +1,4 @@
 import { useState } from "react";
-import Counter from "./Counter";
 
 interface Props {
   onNewMessage: (messageText: string) => void;
@@ -28,7 +27,6 @@ export const MessageCompose: React.FunctionComponent<Props> = ({
         <input onChange={handleChange} value={inputValue} />
         <button type="submit">Send Message!</button>
       </form>
-      <Counter />
     </div>
   );
 };
