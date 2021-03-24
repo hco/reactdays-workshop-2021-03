@@ -8,7 +8,7 @@ ReactDOM.render(<App />, document.getElementById("root"));
 
 type UnsavedMessage = Omit<Message, "id">;
 
-const message: UnsavedMessage = {
+export const message: UnsavedMessage = {
   message: "dasdsa",
   author: "as",
   date: 213,

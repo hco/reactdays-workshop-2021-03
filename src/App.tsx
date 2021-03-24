@@ -4,7 +4,6 @@ import Counter from "./component/Counter";
 import { Message } from "./domain/Message";
 
 function App() {
-  const city = "Witten";
   const message: Message = {
     author: "Christian",
     date: 1234,
