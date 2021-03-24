@@ -9,22 +9,6 @@ import { useEffect, useState } from "react";
 
 function App() {
   const [messages, setMessages] = useState<Message[]>([]);
-  useEffect(() => {
-    setTimeout(() => {
-      setMessages((prevMessages) => {
-        return [
-          {
-            author: "Marta",
-            message: "Hier ist ein spannender Artikel!",
-            date: 324,
-            id: "4634",
-          },
-          ...prevMessages,
-        ];
-      });
-    }, 1000);
-  }, []);
-
   const message: Message = {
     author: "Christian",
     date: 1234,
