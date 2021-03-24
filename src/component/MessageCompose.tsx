@@ -1,8 +1,21 @@
 import { useState } from "react";
-
+import styled, { css } from "styled-components";
+import { Button } from "./Button";
 interface Props {
   onNewMessage: (messageText: string) => void;
 }
+
+const NewMessageInput = styled.input`
+  background: red;
+
+  ${(props) => {
+    // @ts-expect-error
+    if (props.isfunny === "false")
+      return css`
+        background: green;
+      `;
+  }}
+`;
 
 export const MessageCompose: React.FunctionComponent<Props> = ({
   onNewMessage,
@@ -20,12 +33,21 @@ export const MessageCompose: React.FunctionComponent<Props> = ({
     setInputValue(event.target.value);
   };
 
+  const helper = (
+    <NewMessageInput
+      onChange={handleChange}
+      value={inputValue}
+      // @ts-ignore
+      isfunny="true"
+    />
+  );
+
   return (
     <div>
       <form onSubmit={handleSubmit}>
         {inputValue} <br />
-        <input onChange={handleChange} value={inputValue} />
-        <button type="submit">Send Message!</button>
+        {helper}
+        <Button type="submit">Send Message!</Button>
       </form>
     </div>
   );
