@@ -4,6 +4,7 @@ import Counter from "./component/Counter";
 import { Message } from "./domain/Message";
 import { Gitrepo } from "./component/Gitrepo";
 import { GitrepoClass } from "./component/GitrepoClass";
+import { MessageList } from "./component/MessageList";
 
 function App() {
   const message: Message = {
@@ -20,6 +21,7 @@ function App() {
       <MessageView message={message} />
       <Gitrepo repoName="facebook/create-react-app" />
       <GitrepoClass repoName="facebook/create-react-app" />
+      <MessageList />
       <MessageCompose />
     </>
   );
