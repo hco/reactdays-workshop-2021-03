@@ -1,7 +1,11 @@
 import { useState } from "react";
 import Counter from "./Counter";
 
-export const MessageCompose: React.FunctionComponent = () => {
+interface Props {
+  onNewMessage: (messageText: string) => void;
+}
+
+export const MessageCompose: React.FunctionComponent<Props> = (props) => {
   const [inputValue, setInputValue] = useState("");
 
   const handleSubmit: React.FormEventHandler<HTMLFormElement> = (event) => {

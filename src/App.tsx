@@ -14,6 +14,8 @@ function App() {
     id: "sdajudajs",
   };
 
+  const handleMessage = () => {};
+
   return (
     <>
       <h2>Hallo Pouria</h2>
@@ -22,7 +24,7 @@ function App() {
       <Gitrepo repoName="facebook/create-react-app" />
       <GitrepoClass repoName="facebook/create-react-app" />
       <MessageList />
-      <MessageCompose />
+      <MessageCompose onNewMessage={handleMessage} />
     </>
   );
 }
