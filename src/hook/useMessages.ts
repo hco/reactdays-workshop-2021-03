@@ -1,11 +1,12 @@
 import { useState } from "react";
 import { Message } from "../domain/Message";
 
-interface HookReturnValue {
+export interface MessagesHookReturnValue {
   messages: Message[];
   addMessage: (message: string) => void;
 }
-export const useMessages = (): HookReturnValue => {
+
+export const useMessages = (): MessagesHookReturnValue => {
   const [messages, setMessages] = useState<Message[]>([]);
 
   return {
