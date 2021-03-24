@@ -9,12 +9,6 @@ import { useEffect, useState } from "react";
 
 function App() {
   const [messages, setMessages] = useState<Message[]>([]);
-  const message: Message = {
-    author: "Christian",
-    date: 1234,
-    message: "Hallo Welt!",
-    id: "sdajudajs",
-  };
 
   const handleMessage = (messageText: string) => {
     console.log("App bekommt den messageText: " + messageText);
@@ -33,7 +27,6 @@ function App() {
     <>
       <h2>Hallo Pouria</h2>
       <Counter />
-      <MessageView message={message} />
       <Gitrepo repoName="facebook/create-react-app" />
       <GitrepoClass repoName="facebook/create-react-app" />
       <MessageList messages={messages} />
