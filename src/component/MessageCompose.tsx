@@ -13,6 +13,7 @@ export const MessageCompose: React.FunctionComponent<Props> = ({
   const handleSubmit: React.FormEventHandler<HTMLFormElement> = (event) => {
     event.preventDefault();
     onNewMessage(inputValue);
+    setInputValue("");
   };
 
   const handleChange: React.ChangeEventHandler<HTMLInputElement> = (event) => {
@@ -24,7 +25,7 @@ export const MessageCompose: React.FunctionComponent<Props> = ({
     <div>
       <form onSubmit={handleSubmit}>
         {inputValue} <br />
-        <input onChange={handleChange} />
+        <input onChange={handleChange} value={inputValue} />
         <button type="submit">Send Message!</button>
       </form>
       <Counter />
