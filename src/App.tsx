@@ -5,8 +5,26 @@ import { Message } from "./domain/Message";
 import { Gitrepo } from "./component/Gitrepo";
 import { GitrepoClass } from "./component/GitrepoClass";
 import { MessageList } from "./component/MessageList";
+import { useEffect, useState } from "react";
 
 function App() {
+  const [messages, setMessages] = useState<Message[]>([]);
+  useEffect(() => {
+    setTimeout(() => {
+      setMessages((prevMessages) => {
+        return [
+          {
+            author: "Marta",
+            message: "Hier ist ein spannender Artikel!",
+            date: 324,
+            id: "4634",
+          },
+          ...prevMessages,
+        ];
+      });
+    }, 1000);
+  }, []);
+
   const message: Message = {
     author: "Christian",
     date: 1234,
@@ -14,7 +32,18 @@ function App() {
     id: "sdajudajs",
   };
 
-  const handleMessage = () => {};
+  const handleMessage = (messageText: string) => {
+    console.log("App bekommt den messageText: " + messageText);
+    setMessages((prevMessages) => [
+      ...prevMessages,
+      {
+        id: `${Date.now()}`,
+        message: messageText,
+        date: Date.now(),
+        author: "Christian",
+      },
+    ]);
+  };
 
   return (
     <>
@@ -23,7 +52,7 @@ function App() {
       <MessageView message={message} />
       <Gitrepo repoName="facebook/create-react-app" />
       <GitrepoClass repoName="facebook/create-react-app" />
-      <MessageList />
+      <MessageList messages={messages} />
       <MessageCompose onNewMessage={handleMessage} />
     </>
   );
