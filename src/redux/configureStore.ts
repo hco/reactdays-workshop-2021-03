@@ -1,4 +1,6 @@
-import { Action, createStore } from "redux";
+import { Action, compose, createStore } from "redux";
+import { persistReducer } from "redux-persist";
+import localStorage from "redux-persist/lib/storage";
 import { Message } from "../domain/Message";
 
 export interface ApplicationState {
@@ -50,10 +52,17 @@ const reducer = (
   }
 };
 
+const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+
 export const configureStore = () => {
   return createStore(
-    reducer,
-    window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ &&
-      window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__()
+    persistReducer(
+      {
+        storage: localStorage,
+        key: "redux-persist",
+      },
+      reducer
+    ),
+    composeEnhancer()
   );
 };
