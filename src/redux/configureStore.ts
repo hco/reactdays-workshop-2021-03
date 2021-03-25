@@ -1,4 +1,4 @@
-import { createStore } from "redux";
+import { Action, createStore } from "redux";
 import { Message } from "../domain/Message";
 
 export interface ApplicationState {
@@ -9,10 +9,22 @@ const initialState: ApplicationState = {
   messages: [],
 };
 
+interface OneMessageAction<MessageType> extends Action<MessageType> {
+  payload: Message;
+}
+
+interface MessageAddedAction extends OneMessageAction<"Message/Added"> {}
+
+type ApplicationAction = MessageAddedAction | Action<"@@Init">;
+
 const reducer = (
   state: ApplicationState = initialState,
-  action: any
+  action: ApplicationAction
 ): ApplicationState => {
+  // TypeError: Cannot read property 'author' of undefined
+  // console.log(action.payload.author);
+  // console.log(action);
+
   switch (action.type) {
     case "Message/Added":
       return {
