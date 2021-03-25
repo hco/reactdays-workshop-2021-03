@@ -1,10 +1,28 @@
 import { createStore } from "redux";
+import { Message } from "../domain/Message";
 
-export interface ApplicationState {}
+export interface ApplicationState {
+  messages: Message[];
+}
 
-const initialState: ApplicationState = {};
+const initialState: ApplicationState = {
+  messages: [],
+};
 
-const reducer = (state = initialState) => state;
+const reducer = (
+  state: ApplicationState = initialState,
+  action: any
+): ApplicationState => {
+  switch (action.type) {
+    case "Message/Added":
+      return {
+        ...state,
+        messages: [...state.messages, action.payload],
+      };
+    default:
+      return state;
+  }
+};
 
 export const configureStore = () => {
   return createStore(
