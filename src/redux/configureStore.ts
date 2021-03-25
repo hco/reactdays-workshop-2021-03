@@ -1,6 +1,7 @@
-import { Action, compose, createStore } from "redux";
+import { Action, applyMiddleware, compose, createStore } from "redux";
 import { persistReducer } from "redux-persist";
 import localStorage from "redux-persist/lib/storage";
+import thunk from "redux-thunk";
 import { Message } from "../domain/Message";
 
 export interface ApplicationState {
@@ -17,8 +18,26 @@ interface MessageAddedAction extends Action<"Message/Added"> {
 
 type ApplicationAction = MessageAddedAction | Action<"@@Init">;
 
+// Selector
 export const getMessages = (state: ApplicationState): Message[] => {
   return state.messages;
+};
+
+// Action Creator
+export const fetchMessagesFromServer = () => {
+  return (dispatch: any) => {
+    fetch("http://localhost:4712/messages")
+      .then((response) => response.json())
+      .then((messagesFromServer: Message[]) => {
+        messagesFromServer.forEach((message) => {
+          console.log("dspatch");
+          dispatch({
+            type: "Message/Added",
+            payload: message,
+          });
+        });
+      });
+  };
 };
 
 export const addMessage = (messageText: string): MessageAddedAction => {
@@ -33,7 +52,7 @@ export const addMessage = (messageText: string): MessageAddedAction => {
   };
 };
 
-const reducer = (
+export const reducer = (
   state: ApplicationState = initialState,
   action: ApplicationAction
 ): ApplicationState => {
@@ -60,9 +79,10 @@ export const configureStore = () => {
       {
         storage: localStorage,
         key: "redux-persist",
+        blacklist: ["messages"],
       },
       reducer
     ),
-    composeEnhancer()
+    composeEnhancer(applyMiddleware(thunk))
   );
 };

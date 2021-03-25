@@ -18,8 +18,8 @@ function App() {
         <Gitrepo repoName="facebook/create-react-app" />
         <GitrepoClass repoName="facebook/create-react-app" />
         <MessagePage />
-        <MessagePage />
-        <MessagePage />
+        {/* <MessagePage />
+        <MessagePage /> */}
       </Provider>
     </PersistGate>
   );
