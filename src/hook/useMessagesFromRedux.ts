@@ -1,11 +1,15 @@
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { addMessage, getMessages } from "../redux/configureStore";
 import { MessagesHookReturnValue } from "./useMessages";
 
 export const useMessagesFromRedux = (): MessagesHookReturnValue => {
-  const messages = useSelector((state: any) => state.messages);
+  const messages = useSelector(getMessages);
+  const dispatch = useDispatch();
 
   return {
     messages,
-    addMessage: () => {},
+    addMessage: (messageText: string) => {
+      dispatch(addMessage(messageText));
+    },
   };
 };

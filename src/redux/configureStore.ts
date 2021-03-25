@@ -15,6 +15,22 @@ interface MessageAddedAction extends Action<"Message/Added"> {
 
 type ApplicationAction = MessageAddedAction | Action<"@@Init">;
 
+export const getMessages = (state: ApplicationState): Message[] => {
+  return state.messages;
+};
+
+export const addMessage = (messageText: string): MessageAddedAction => {
+  return {
+    type: "Message/Added",
+    payload: {
+      author: "Marko",
+      message: messageText,
+      id: `${Date.now()}`,
+      date: Date.now(),
+    },
+  };
+};
+
 const reducer = (
   state: ApplicationState = initialState,
   action: ApplicationAction
@@ -27,7 +43,7 @@ const reducer = (
     case "Message/Added":
       return {
         ...state,
-        messages: [...state.messages, action.payload],
+        messages: [action.payload, ...state.messages],
       };
     default:
       return state;
