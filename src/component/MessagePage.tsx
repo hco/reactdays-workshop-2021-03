@@ -1,10 +1,11 @@
 import { MessageCompose } from "./MessageCompose";
 import { MessageList } from "./MessageList";
 // import { useMessagesFromServer } from "../hook/useMessagesFromServer";
-import { useMessages } from "../hook/useMessages";
+// import { useMessages } from "../hook/useMessages";
+import { useMessagesFromRedux } from "../hook/useMessagesFromRedux";
 
 export const MessagePage = () => {
-  const { messages, addMessage } = useMessages();
+  const { messages, addMessage } = useMessagesFromRedux();
 
   return (
     <>
