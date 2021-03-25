@@ -9,11 +9,9 @@ const initialState: ApplicationState = {
   messages: [],
 };
 
-interface OneMessageAction<MessageType> extends Action<MessageType> {
+interface MessageAddedAction extends Action<"Message/Added"> {
   payload: Message;
 }
-
-interface MessageAddedAction extends OneMessageAction<"Message/Added"> {}
 
 type ApplicationAction = MessageAddedAction | Action<"@@Init">;
 
