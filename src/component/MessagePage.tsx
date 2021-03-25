@@ -1,6 +1,6 @@
 import { MessageCompose } from "./MessageCompose";
 import { MessageList } from "./MessageList";
-import { useMessagesFromServer } from "../hook/useMessagesFromServer";
+// import { useMessagesFromServer } from "../hook/useMessagesFromServer";
 import { useMessages } from "../hook/useMessages";
 
 export const MessagePage = () => {

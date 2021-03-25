@@ -1,5 +1,5 @@
 import { Message } from "../domain/Message";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import MessageView from "./MessageView";
 
 interface Props {
